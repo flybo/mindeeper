@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/main"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.bob.flyboymvp.widget.NoScrollViewPager
+        android:id="@+id/vp_cts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:id="@+id/ll_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/green2"
+        android:orientation="horizontal"
+        android:tag="w,M5">
+
+        <LinearLayout
+            android:id="@+id/lay_a"
+            style="@style/layout_toolbar_down">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/aan"
+                android:tag="M2,M2"/>
+
+            <TextView
+                style="@style/text_base"
+                android:tag="w,w,F2"
+                android:text="距离"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_b"
+            style="@style/layout_toolbar_down">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/aay"
+                android:tag="M2,M2"/>
+
+            <TextView
+                style="@style/text_base"
+                android:tag="w,w,F2"
+                android:text="收藏"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_c"
+            style="@style/layout_toolbar_down">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/aaz"
+                android:tag="M2,M2"/>
+
+            <TextView
+                style="@style/text_base"
+                android:tag="w,w,F2"
+                android:text="关系"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_d"
+            style="@style/layout_toolbar_down">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/aaq"
+                android:tag="M2,M2"/>
+
+            <TextView
+                style="@style/text_base"
+                android:tag="w,w,F2"
+                android:text="单位"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_e"
+            style="@style/layout_toolbar_down">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/aar"
+                android:tag="M2,M2"/>
+
+            <TextView
+                style="@style/text_base"
+                android:tag="w,w,F2"
+                android:text="姓名"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

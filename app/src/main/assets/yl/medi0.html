@@ -1,0 +1,279 @@
+<!DOCTYPE html><html>
+<head>
+<title>医疗共享网</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0,target-densitydpi=device-dpi">
+<meta name="keywords"content="医疗共享网">
+<meta name="description"content="医疗共享网">
+<link href="img/yl.jpg" rel="apple-touch-icon-precomposed" />
+<link rel="stylesheet" type="text/css" href="js/witcs0.css">
+<script id="baidu1js" ></script>
+<script id="baidu2js" onload="baidustart()"></script>
+<link id="baidu1cs" rel="stylesheet" type="text/css" />
+<style>
+.djbianse{background-size:1% 100%;transition:background-size 10s;-webkit-transition:background-size 10s;}
+</style>
+</head>
+<body class="ofa bgc10" onload="loadend()" onresize="autocss()">
+<div id="s_select" class="none index999 fix top0 W11 CH callnone"></div>
+<div id="alertm" class="none index1000 fix top0 W11 CH AC bgca callnone"><div class="MA MT8 B34M H24M rad1 bgc10"><div class="MLT B32M H ALP rad1" >系统提示：</div><div id="alertm0" class="MLT B32M H12M F4 ALP indent" ></div><div class="MLT B32M H AC bgc15 rad1" onClick="hide('alertm')">知道了</div></div></div>
+<div id="form" class="none fix top0 index990 W11 CH bgc2 ofa"></div>
+<div id="map" title=16 class="none fix top0 index990 W11 CH bgc1" ></div>
+
+<div id="seachw" class="none index900 fix top0 W11 CH ofa bgc10">
+	<div class="W11 H4M bgc5 ffHT">
+    	<div class="FL MT05 F3 LH2 B5M AC color1" onClick="hide('seachw')">&larr;</div>
+        <input id="keyw" class="FL MT05 C15M F3 LH2 ALP radL" placeholder="末次搜索词" />
+        <img class="FL POT" data-src="img/2wm.png" />
+        <div class="FR M05 B5M F3 LH2 AC bgc25 rad" >搜索</div>
+    </div>
+    <div class="W11 ALP F3 LH25">最近搜索：</div>
+    <ul><li class="FL M05 ACP LH2 F3 rad bgc7">电动轮椅</li>
+    <li class="FL M05 ACP LH2 F3 rad bgc7">护理床</li>
+    <li class="FL M05 ACP LH2 rad F3 bgc7">动态心电图</li>
+    <li class="FL M05 ACP LH2 F3 rad bgc7">呼吸机</li>
+    </ul>
+    <div class="clear W11 ALP F3 LH25">热门搜索：</div>
+    <ul><li class="FL M05 ACP LH2 F3 rad bgc7">体脂秤</li>
+    <li class="FL M05 ACP LH2 F3 rad bgc7">血糖仪</li>
+    <li class="FL M05 ACP LH2 rad F3 bgc7">血压计</li>
+    <li class="FL M05 ACP LH2 F3 rad bgc7">理疗仪</li>
+    </ul>
+</div>
+<div id="nav" class="W11 H AC bgc73 ffHT">
+   <img class="FL ICON" data-src="img/yl.jpg" onclick="setplat(2)"/>
+   <input class="FL C16M H ALP bord_select bgc73" readonly data-t="radio" data-s="医疗共享网,医疗共享网厂家平台,医疗共享网药店平台,医疗共享诊所平台,医疗共享医师平台" value="健康之友" data-finp="href2"/>
+   <div title=6 class="FR ICON bgs50" style="background-image:url(img/person.png)"  onClick="R_show();R_show('w6')"></div>
+   <div title=7 class="FR ICON bgs50" style="background-image:url(img/cart.png)"  onClick="R_show();R_show('w7')"></div>
+   <div class="FR ICON bgs50" style="background-image:url(img/search.png)" onClick="show('seachw')"></div>
+</div>
+<div id="navb" class="fix bottom0 W11 H AC no_select bgc72 ffHT">
+   <div title=0 class="FL W61 H" onClick="R_show();R_show('w0')">首页</div>
+   <div title=1 class="FL W61 H" onClick="R_show();R_show('w1')">专家</div>
+   <div title=2 class="FL W61 H" onClick="showsb_tp()">器械</div>
+   <div title=3 class="FL W61 H" onClick="R_show();R_show('w3')">食疗</div>
+   <div title=4 class="FL W61 H" onClick="R_show();R_show('w4')">社区</div>
+   <div title=5 class="FL W61 H colorY" onClick="R_show();R_show('w5');daojibs()">救急</div>
+</div>
+
+<div class="FL W11 CHN2H ofa">
+	<div id="w0" class="W11">
+    	<div class="W11 H12M bg_contain" style="background-image:url(../img/pic/ylqxzs.jpg)"></div>
+        <img class="clear FR MRT B8M border_in" src="img/charge01.jpg" onclick="pay_code()"/>
+        <div class="FL C12M H ALP"><span id="user" class=" ffHT"></span>,欢迎您!</div>
+        <div class="FL C12M H4M ALP F3 ">拥有慧脑币: <span id="money" class="F6 colorR"></span></div>
+
+        <div class="clear W11 F4 LH2 ALP bgc2" onclick="">我的任务<div class="FR MR">>></div></div>
+        <ul id="myrenwu" class="W11" >
+         	<li class="W11 H ALP bordB">9:20 量血压</li>
+         	<li class="W11 H ALP bordB">11:20 吃药</li>
+        </ul>
+    <div id="nowlocal"><input id="adcode" placeholder="当前所在地域" readonly class="FL C4M H ALP bord_select" onmousedown="c_addr(4,0)" /><input id="gps" class="none " /><div class="FL ICON bgc73 bgs50" style="background-image:url(../img/a/local.png)" onclick="get_GPS(1)"/></div></div>
+            <div class="clear W11 F4 LH2 ALP bgc2" onclick="">附近网点<div class="FR MR">>></div></div>
+        <ul id="myrenwu" class="W11" >
+         	<li class="W11 H ALP bordB">黎明诊所<span class="FR MR colorR">200米</span></li>
+         	<li class="W11 H ALP bordB">华联药房<span class="FR MR colorR">300米</span></li>
+        </ul>
+
+        <div class="W11 F4 LH2 ALP bgc2" onclick="">设备展示<div class="FR MR">>></div></div>
+        <ul id="zhanshi" class="W11 F3 AC" >
+          	<li class="FL MLT A41 borderO rad1" onClick="addcom(1)"><img class="H4M MT" data-src="img/jc1.jpg" /><br>血压计</li>
+           	<li class="FL MLT A41 borderO rad1" onClick=""><img class="H4M MT" data-src="img/jc2.jpg" /><br>胎心仪</li>
+          	<li class="FL MLT A41 borderO rad1" onClick=""><img class="H4M MT" data-src="img/xty.jpg" /><br>血糖仪</li>
+          	<li class="FL MLT A41 borderO rad1" onClick=""><img class="H4M MT" data-src="img/zl1.jpg" /><br>雾化器</li>   
+            <li class="FL MLT A41 borderO rad1" onClick="addcom(1)"><img class="H4M MT" data-src="img/xdy.jpg" /><br>心电仪</li>
+           	<li class="FL MLT A41 borderO rad1" onClick=""><img class="H4M MT" data-src="img/fxj.jpg" /><br>呼吸机</li>
+          	<li class="FL MLT A41 borderO rad1" onClick=""><img class="H4M MT" data-src="img/hl1.jpg" /><br>护理床</li>
+          	<li class="FL MLT A41 borderO rad1" onClick=""><img class="H4M MT" data-src="img/hl2.jpg" /><br>轮椅</li>
+            <div class="clear MB"></div> 
+        </ul>       
+       <div class="W11 F4 LH2 ALP bgc2" onclick="">医疗科技<div class="FR MR">>></div></div>
+       <ul id="s_history" class="W11 H12M" >
+         	<li class="W11 H6M bordB"><img class="M FL H4M B6M" data-src="img/adv002.jpg"><div class="FL MT05 C9M F4 ">最新神经元修复技术,来自美国斯坦福大学生物研究院的发明</div></li>
+           	<li class="W11 H6M bordB"><img class="M FL H4M B6M" data-src="img/kj1.jpg"><div class="FL MT05 C9M F4 ">人体3D影像技术在诊断肿瘤方面的新作用和前景</div></li>
+       </ul>
+       <div class="W11 F4 LH2 ALP bgc2" onclick="">健康常识<div class="FR MR">>></div></div>
+       <ul id="s_history" class="W11 H12M" >
+          	<li class="W11 H6M bordB"><img class="M FL H4M B6M" data-src="img/kj2.jpg"><div class="FL MT05 C9M F4 ">孕期饮食和运动对胎儿发育的影响</div></li>
+           	<li class="W11 H6M bordB"><img class="M FL H4M B6M" data-src="img/jk8.jpg"><div class="FL MT05 C9M F4 ">高血压和心脏病的老年人如何预防中风</div></li>
+</ul>        
+       <div class="W11 F4 LH2 ALP bgc2" onclick="">我要加盟<div class="FR MR">>></div></div>
+		<ul id="jiameng" class="W11 H10M F4 AC" >
+          	<li class="FL MLT A41 borderO rad1" onClick="addcom(0)"><img class="H4M MT" data-src="img/apply.png" /><br>厂商</li>
+           	<li class="FL MLT A41 borderO rad1" onClick="addcom(1)"><img class="H4M MT" data-src="img/chemist.png" /><br>药店</li>
+          	<li class="FL MLT A41 borderO rad1" onClick="addcom(2)"><img class="H4M MT" data-src="img/clinic.png" /><br>诊所</li>
+          	<li class="FL MLT A41 borderO rad1" onClick="addcom(3)"><img class="H4M MT" data-src="img/doctor.png" /><br>医师</li>   
+        </ul>       
+
+       <details>
+            <summary class="W11 H ALP" >使用帮助</summary>
+            <details>
+            	<summary class="ML A11 H ALP" >关于隐私保护</summary>
+ 				<p class="clear W11 F4 bgc9">    健康档案。</p>
+            </details>
+            <details>
+            	<summary class="ML A11 H ALP" >如何联系专家</summary>
+ 				<p class="clear W11 F4 bgc9">    健康档案。</p>
+            </details>
+            <details>
+            	<summary class="ML A11 H ALP" >信用与保证金</summary>
+ 				<p class="clear W11 F4 bgc9">    健康档案。</p>
+            </details> 
+            <details>
+            	<summary class="ML A11 H ALP" >关于健康档案</summary>
+ 				<p class="clear W11 F4 bgc9">    健康档案。</p>
+            </details> 
+            <details>
+            	<summary class="ML A11 H ALP" >如何安全使用</summary>
+ 				<p class="clear W11 F4 bgc9">    健康档案。</p>
+            </details>
+       </details>
+       <div class="clear W11 LH2 F4 AC colorR shadow0">友情链接</div>
+       <div id="linker" class="W11 MB"></div>
+       <div id="footer" class="clear MT CW"><div class="W11 H4M F4 P1 AC bgca color1 FFHT">浙江慧脑信息科技有限公司</div><div class="W11 H6M F3 AC bgca"><span><img data-src="img/regico.png" class="middle"></span>浙ICP备14020218号 </div></div>
+    </div>
+
+    <div id="w1" class="none F3 LH2 bgc10">
+		<div class="FL MLT A2T4 H6M rad1 borderO"><img class="FL M ICON rad" data-src="img/art002.jpg" ><div class="FL F4 B9M bordB">王燕群</div><div class="FL F3 colorR">心血管专家</div></div>
+		<div class="FL MLT A2T4 H6M rad1 borderO"><img class="FL M ICON rad" data-src="img/ys2.jpg" ><div class="FL F4 B9M bordB">刘刚</div><div class="FL F3 colorR">内分泌专家</div></div>
+		<div class="FL MLT A2T4 H6M rad1 borderO"><img class="FL M ICON rad" data-src="img/ys5.jpg" ><div class="FL F4 B9M bordB">李敏丽</div><div class="FL F3 colorR">妇产科专家</div></div>
+		<div class="FL MLT A2T4 H6M rad1 borderO"><img class="FL M ICON rad" data-src="img/ys0.jpg" ><div class="FL F4 B9M bordB">宋小文</div><div class="FL F3 colorR">小儿科专家</div></div>
+		<div class="FL MLT A2T4 H6M rad1 borderO"><img class="FL M ICON rad" src="img/ys3.jpg" ><div class="FL F4 B9M bordB">陆海风</div><div class="FL F3 colorR">肿瘤专家</div></div>
+		<div class="FL MLT A2T4 H6M rad1 borderO"><img class="FL M ICON rad" data-src="img/ys4.jpg" ><div class="FL F4 B9M bordB">缪明帆</div><div class="FL F3 colorR">肾病专家</div></div>
+		<div class="FL MLT A2T4 H6M rad1 borderO"><img class="FL M ICON rad" data-src="img/ys6.jpg" ><div class="FL F4 B9M bordB">刘大民</div><div class="FL F3 colorR">眼科专家</div></div>
+    </div>
+
+	<div id="w2" class="none W11">
+        <ul id="R_BAR" class="fix top4 right0 B6M CHN2H bgc2 ofa" ></ul>
+        <ul id="cata2" class="FL C6M CHN2H F3 LH3 ofa"></ul>
+    </div>
+    <div id="w3" class="none W11 ffWRYH">
+<!--        <ul id="cata3" class="FL C6M CHN2H F3 LH3 ofa">
+        	<li class="FL W11 H12M bg_cont bgrN ARP bordB" style="background-image:url(img/yw0.jpg)" onclick="showdetail()">倍他乐克(β受体阻滞剂)</li>  
+        	<li class="FL W11 H12M bg_cont bgrN ARP bordB" style="background-image:url(img/yw1.jpg)">卡托普利(血管紧张素转换酶抑制剂)</li>  
+        	<li class="FL W11 H12M bg_cont bgrN ARP bordB" style="background-image:url(img/yw2.jpg)">络活喜(钙拮抗剂)</li>  
+        	<li class="FL W11 H12M bg_cont bgrN ARP bordB" style="background-image:url(img/yw3.jpg)">氢氯噻嗪(利尿药)</li>  
+        </ul>-->
+	</div>
+    <div id="w4" class="none W11 AC ffWRYH">
+		<div class="FL MLT A2T4 H6M F4 LH3 rad1 borderO">孕妇群</div>
+		<div class="FL MLT A2T4 H6M F4 LH3 rad1 borderO">产后群</div>
+		<div class="FL MLT A2T4 H6M F4 LH3 rad1 borderO">高血压群</div>
+		<div class="FL MLT A2T4 H6M F4 LH3 rad1 borderO">糖尿病群</div>
+		<div class="FL MLT A2T4 H6M F4 LH3 rad1 borderO">中风康复群</div>
+		<div class="FL MLT A2T4 H6M F4 LH3 rad1 borderO">骨科康复群</div>
+		<div class="FL MLT A2T4 H6M F4 LH3 rad1 borderO">哮喘群</div>
+		<div class="FL MLT A2T4 H6M F4 LH3 rad1 borderO">血液病群</div>
+		<div class="FL MLT A2T4 H6M F4 LH3 rad1 borderO">肾病群</div>
+		<div class="FL MLT A2T4 H6M F4 LH3 rad1 borderO">帕金森症群</div>
+	</div>
+    <div id="w5" class="none W11 ffWRYH">
+   		<div id="autotel" class="FL MLT C9M H AC bgc10 bord_check0 djbianse bgrN" style="background-image:url(../img/bj/bj35.jpg)" onclick="checkfn()">自动拨号倒计时</div><div class="FR MRT BTN bgc54" onClick="cancelautotel()">取消</div>
+		<ul id="tels">
+            <div class="FL MLT C6M H ALP bord_check0 bgc15" onclick="checkfn()">120急救电话</div><div class="FL MT ICON bgc15 bgs50" style="background-image:url(img/telphone.png)"  onClick="callphone(120)"></div> 
+            <div class="FL MLT C6M H ALP bord_check0 bgc25" onclick="checkfn()">健康顾问电话</div><div class="FL MT ICON bgc25 bgs50" style="background-image:url(img/telphone.png)"  onClick="callphone(15306501667)"></div> 
+            <div class="FL MLT C6M H ALP bord_check1 bgc34" onclick="checkfn()">家人应急电话</div><div class="FL MT ICON bgc35 bgs50" style="background-image:url(img/telphone.png)"  onClick="callphone(13806549509)"></div>
+             <div class="FL MLT C6M H ALP bord_check1 bgc34" onclick="checkfn()">向最近的人求救</div><div class="FL MT ICON bgc35 bgs50" style="background-image:url(img/telphone.png)"  onClick=""></div>
+       </ul>
+    	<div class="FR MRT BTN bgc15" onclick="saveautotel()">保存</div>
+    </div> 
+    <div id="goods" class="index990 fix top0 W11 CH ofa bgc10">
+            <div class="FL M05 ICON F3 LH3 bgca5 rad" onClick="hide('goods')">&larr;</div>
+            <div class="W11"></div>
+            <div class="clear W11 " ></div>
+            <div id="bmenu" class="fix bottom0 W11 AC bgc2 bordT ffHT">
+               <div class="FR MT06 MR B9M F3 LH2 radR bgc25" onClick="show('w1')">立即购买</div>
+               <div class="FR MT06 B10M F3 LH2 AC radL bgc35" onClick="show('w1')">放入购物车</div>
+               <div class="FL ML ICON F1" onClick="show()"><img class="MT05 H1_5M" data-src="img/SS37.png"><br>商铺</div>
+               <div class="FL ML ICON F1" onClick="show()"><img class="MT05 H1_5M" data-src="img/service.png"><br>客服</div>       
+               <div class="FL ML ICON F1" onClick="show()"><img class="MT05 H1_5M" data-src="img/star.png"><br>收藏</div>       
+            </div>
+        </div>
+    </div>
+    <div id="w6" class="none W11 ffWRYH"></div>
+</div>
+<div id="detail" class="none index99 fix top0 W11 CH bgc10 ofa"></div>
+
+</body>
+</html>
+<script src="js/witjs0.js"></script>
+<script src="js/wit_input0.js"></script>
+<script src="js/wit_ajax.js"></script>
+<script src="js/c.js"></script>
+<script src="js/yl.js"></script>
+<script src="js/baidu_conv0.js"></script>
+
+<script>
+var pubable=true,markerArr=[],lastno;
+function loadend(){autocss();loadimg();_init();
+	postmessage({functionname:"getuserinfo",callback: "callback"});
+	var cont='',cont3='';
+	for(var i=0;i<qx_cata.length;i++){
+		cont+='<li class="BTN bordB" onclick="search_sbpt()">'+qx_cata[i]+'</li>'}
+	document.getElementById("R_BAR").innerHTML=cont;
+}
+function callback(msg){
+	_u=msg.message; _imgpath=_u.serverpath;console.log(_u);
+	document.getElementById("user").innerHTML=_u.per_full_name||_u.per_nick_name;
+	onclickid('navb',0);
+	if(flag>4){loadbaidujs()}else{hide('nowlocal');get_GPS('gps')}
+	ques_wmoney();
+}
+function search_shop(){R_show();//查询附近网点
+	var map=new Map();
+	map.put("token",_u.token);map.put("userguid",_u.user_guid);
+	map.put("x0",localgps.lng-0.1);map.put("x1",localgps.lng+0.1);
+	map.put("y0",localgps.lat-0.1);map.put("y1",localgps.lat+0.1);console.log(map);
+	WITAJAX.ajaxmap(map,"http://121.43.233.185/mavenmedicalsharing/shop/retrievept.do",showshop,error);
+}//表：shopInfo
+
+
+function search_sbpt(){R_show();//分类查询已有设备
+	var map=new Map();
+	map.put("token",_u.token);map.put("userguid",_u.user_guid);
+	map.put("pt",event.srcElement.innerHTML);console.log(map);
+	WITAJAX.ajaxmap(map,"http://121.43.233.185/mavenmedicalsharing/product/retrievept.do",showsbtp,error);
+}
+function relog(){hide("rereg");document.getElementById("pswd").value="";onfocusid("pswd");}
+function sethash(d){console.log(d);
+	if(d&&d.result==1){_uu=d.message;urlpath=_uu.json;//publish_sb(1000);
+		if(_uu&&_uu.pz==1){var map=new Map();map.put("token",_u.token);
+			map.put("userguid",_u.user_guid);
+			WITAJAX.ajaxmap(map,urlpath+"/ep/indicator/getsbcount.do",startsys,error);
+		}else{alertmes("该单位用户未通过审批")}
+	}else{show("rereg")}
+}
+
+
+function daojibs(){//自动拨号倒计时
+	var ob=document.getElementById('autotel');
+	if(ob.classList.contains("bord_check1")){
+		setTimeout(function (){ob.style.backgroundSize="100% 100%"},1000);
+		telauto=setTimeout(function (){	document.getElementById('tels').querySelector(".bord_check1").nextSibling.click()},11000);
+}}
+function cancelautotel(){//取消自动拨号
+	telauto&&clearTimeout(telauto);
+	document.getElementById('autotel').classList.remove("djbianse");
+	document.getElementById('autotel').style.backgroundSize="1% 100%"
+}
+function saveautotel(){
+	localStorage["autotel"+_u.user_guid]=JSON.stringify({a:document.getElementById("autotel").contains("bord_check1"),b:document.getElementById("autotel").title});
+
+}
+
+function search_sbshop(n){//查询附近有设备的网点
+	var map=new Map();
+	map.put("token",_u.token);map.put("userguid",_u.user_guid);
+	map.put("isbn",n);
+	map.put("x0",localgps.lng-0.1);map.put("x1",localgps.lng+0.1);
+	map.put("y0",localgps.lat-0.1);map.put("y1",localgps.lat+0.1);console.log(map);
+	WITAJAX.ajaxmap(map,"http://121.43.233.185/mavenmedicalsharing/shop/retrievept.do",showsbshop,error);
+}//表：qxfp_table
+
+function sb_detail(i){//设备详情
+	var da=sbtp_data[i],det=document.getElementById("detail");console.log(da);
+	det.innerHTML='<div class="W11 H AC bgc73"><div class="FL BTN" onclick="hide(&quot;detail&quot;)">&lt;</div>医疗共享网</div><img class="FL MLT B12M" src="'+picpath+da.pics+'" /><div class="FL C15M H ALP">'+da.p_size+da.p_name+'</div><div class="FL C15M F3 P1"><span class="colorR ffHT">品牌：</span><br>'+da.brand+'<br><span class="colorR ffHT">厂商：</span><br>'+da.manuf+'</div><div class="clear FL MLT A11 F3 P1"><span class="colorR ffHT">特点：</span><br>'+da.p_char+'<br><span class="colorB ffHT">适用对象：</span><br>'+da.appli+'</div><div class="clear FL MLT A1T2 F4 LH2 ALP border" onclick="rendqx('+da.price_a+','+da.id+')"><span class="FR M ICON AC F5 bgc105 rad">租</span>日租金：'+(da.price_a/500).toFixed(2)+'元<br>免租期：3天</div><div class="FL MLT A1T2 F3 LH2 ALP border"><div class="FR M ICON AC F5 bgc35 rad">买</div>单价：'+da.price_a+'元/'+da.price_unit+'<br>送：'+(da.price_a*10).toFixed(0)+'慧币</div><ul id="shop" class="W11"></ul>';
+	show("detail");
+	search_sbshop(da.id);
+}
+</script>

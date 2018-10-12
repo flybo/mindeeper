@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/main"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <AbsoluteLayout
+        android:id="@+id/abslay_set"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tag="M,M,CW">
+
+        <LinearLayout
+            android:id="@+id/layout_skin_one"
+            style="@style/skin_ll">
+            <TextView
+                style="@style/skin_text_left"
+                android:background="@color/skin_cole_a"
+                android:text="冰清"/>
+
+            <TextView
+                style="@style/skin_text_right"
+                android:background="@color/skin_cole_a_a"
+                android:text="玉洁"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_skin_two"
+            style="@style/skin_ll">
+
+            <TextView
+                style="@style/skin_text_left"
+                android:background="@color/skin_cole_2"
+                android:text="流金"/>
+
+            <TextView
+                style="@style/skin_text_right"
+                android:background="@color/skin_cole_2_1"
+                android:text="岁月"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_skin_three"
+            style="@style/skin_ll">
+
+            <TextView
+                style="@style/skin_text_left"
+                android:background="#005C00"
+                android:text="生机"/>
+
+            <TextView
+                style="@style/skin_text_right"
+                android:background="#06CF27"
+                android:text="盎然"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_skin_four"
+            style="@style/skin_ll">
+
+            <TextView
+                style="@style/skin_text_left"
+                android:background="#3A64B3"
+                android:text="拥抱"/>
+
+            <TextView
+                style="@style/skin_text_right"
+                android:background="#4FA8E8"
+                android:text="大海"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_skin_five"
+            style="@style/skin_ll">
+
+            <TextView
+                style="@style/skin_text_left"
+                android:background="#1F3D6E"
+                android:text="深邃"/>
+
+            <TextView
+                style="@style/skin_text_right"
+                android:background="#4E7DC4"
+                android:text="的心灵"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_skin_six"
+            style="@style/skin_ll">
+
+            <TextView
+                style="@style/skin_text_left"
+                android:background="#45484D"
+                android:text="往事"/>
+
+            <TextView
+                style="@style/skin_text_right"
+                android:background="#969A9C"
+                android:text="如烟"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_skin_seven"
+            style="@style/skin_ll">
+
+            <TextView
+                style="@style/skin_text_left"
+                android:background="#8C4D30"
+                android:text="品味"/>
+
+            <TextView
+                style="@style/skin_text_right"
+                android:background="#E0A48B"
+                android:text="生活"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_skin_eight"
+            style="@style/skin_ll">
+
+            <TextView
+                style="@style/skin_text_left"
+                android:background="#826471"
+                android:text="拥抱"/>
+
+            <TextView
+                style="@style/skin_text_right"
+                android:background="#B08C7D"
+                android:text="大地"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_skin_nine"
+            style="@style/skin_ll">
+
+            <TextView
+                style="@style/skin_text_left"
+                android:background="#C2578D"
+                android:text="红粉"/>
+
+            <TextView
+                style="@style/skin_text_right"
+                android:background="#FC97E1"
+                android:text="佳人"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_skin_ten"
+            style="@style/skin_ll">
+
+            <TextView
+                style="@style/skin_text_left"
+                android:background="#4C3370"
+                android:text="薰衣草"/>
+
+            <TextView
+                style="@style/skin_text_right"
+                android:background="#B088DB"
+                android:text="之恋"/>
+        </LinearLayout>
+    </AbsoluteLayout>
+</LinearLayout>

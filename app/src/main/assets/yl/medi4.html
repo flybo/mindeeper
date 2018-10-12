@@ -1,0 +1,195 @@
+<!DOCTYPE html><html>
+<head>
+<title>医疗共享网</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0,target-densitydpi=device-dpi">
+<meta name="keywords"content="医疗共享网">
+<meta name="description"content="医疗共享网">
+<link href="img/yl.jpg" rel="apple-touch-icon-precomposed" />
+<link rel="stylesheet" type="text/css" href="../css/witcs0.css">
+</head>
+<body class="ofa bgc10" onload="loadend()" onresize="autocss()">
+<div id="s_select" class="none index999 fix top0 W11 CH callnone"></div>
+<div id="alertm" class="none index1000 fix top0 W11 CH AC bgca callnone"><div class="MA MT8 B34M H24M rad1 bgc10"><div class="MLT B32M H ALP rad1" >系统提示：</div><div id="alertm0" class="MLT B32M H12M F4 ALP indent" ></div><div class="MLT B32M H AC bgc15 rad1" onClick="hide('alertm')">知道了</div></div></div>
+<div id="form" class="none fix top0 index990 W11 CH bgc2 ofa"></div>
+<div id="map" class="none fix top0 index990 W11 CH bgc1" ></div>
+<div id="seachw" class="none index900 fix top0 W11 CH ofa bgc10">
+	<div class="W11 H4M bgc5 ffHT">
+    	<div class="FL MT05 F3 LH2 B5M AC color1" onClick="hide('seachw')">&larr;</div>
+        <input id="keyw" class="FL MT05 C15M F3 LH2 ALP radL" placeholder="末次搜索词" />
+        <img class="FL POT" data-src="../img/btn/2wm.png" />
+        <div class="FR M05 B5M F3 LH2 AC bgc25 rad" >搜索</div>
+    </div>
+</div>
+<div id="nav" class="W11 H AC bgc73 ffHT">
+   <img class="FL ICON" data-src="img/yl.jpg" onclick="setplat(2)"/>
+   <input class="FL C16M H ALP bord_select" readonly data-t="radio" data-s="医疗共享网,医疗共享医师平台,医疗共享网点入口,医疗共享诊所平台,医疗共享厂家平台" value="医疗共享医师平台" data-finp="href2"/>
+   <div title=5 class="FR ICON bgs50" style="background-image:url(../img/a/person.png)"  onClick="R_show();R_show('w5')"></div>
+   <div title=4 class="FR ICON bgs50" style="background-image:url(../img/a/cart.png)"  onClick="R_show();R_show('w4')"></div>
+   <div class="FR ICON bgs50" style="background-image:url(../img/a/search.png)"  onClick="show('seachw')"></div>
+</div> 
+<div id="navb" class="fix bottom0 W11 H AC no_select bgc72 ffHT">
+   <div title=0 class="FL W51 H colorY" onClick="R_show();R_show('w0');daojibs()">救急</div>
+   <div title=1 class="FL W51 H" onClick="R_show();R_show('w1')">专家</div>
+   <div title=2 class="FL W51 H" onClick="R_show();R_show('w2')">器械</div>
+   <div title=3 class="FL W51 H" onClick="R_show();R_show('w3')">药品</div>
+   <div title=4 class="FL W51 H" onClick="R_show();R_show('w4')">社区</div>
+</div>
+
+<div class="FL W11 CHN2H ofa">
+	<div id="w" class="W11">
+    	<div class="W11 H12M bg_contain" style="background-image:url(../img/pic/ylqxzs.jpg)"></div>
+         <div class="W11 F4 LH2 ALP bgc2" onclick="">我的任务<div class="FR MR">>></div></div>
+         <ul id="myrenwu" class="W11" >
+         	<li class="W11 H ALP bordB">9:20 量血压</li>
+         	<li class="W11 H ALP bordB">11:20 吃药</li>
+         </ul>
+          <div class="W11 F4 LH2 ALP bgc2" onclick="">合作伙伴<div class="FR MR">>></div></div>
+         <ul id="jiameng" class="W11 H8M" >
+          	<li class="FL MLT A41 F5 LH3 AC borderO rad" onClick="addcom(1)">厂商</li>
+           	<li class="FL MLT A41 F5 LH3 AC borderO rad" onClick="">药店</li>
+          	<li class="FL MLT A41 F5 LH3 AC borderO rad" onClick="">诊所</li>
+          	<li class="FL MLT A41 F5 LH3 AC borderO rad" onClick="">医师</li>   
+         </ul>       
+       <div class="W11 F4 LH2 ALP bgc2" onclick="">医疗科技<div class="FR MR">>></div></div>
+        <ul id="s_history" class="W11 H12M" ></ul>
+        <div class="W11 F4 LH2 ALP bgc2" onclick="">健康常识<div class="FR MR">>></div></div>
+        <ul id="s_history" class="W11 H12M" ></ul>
+        <details open>
+            <summary class="W11 H ALP" >使用帮助</summary>
+            <details>
+            	<summary class="ML A11 H ALP" >关于隐私保护</summary>
+ 				<p class="clear W11 F4 bgc9">    健康档案。
+            </details> <details>
+            	<summary class="ML A11 H ALP" >如何联系专家</summary>
+ 				<p class="clear W11 F4 bgc9">    健康档案。
+            </details> <details>
+            	<summary class="ML A11 H ALP" >信用与保证金</summary>
+ 				<p class="clear W11 F4 bgc9">    健康档案。
+            </details> <details>
+            	<summary class="ML A11 H ALP" >关于健康档案</summary>
+ 				<p class="clear W11 F4 bgc9">    健康档案。
+            </details> <details>
+            	<summary class="ML A11 H ALP" >如何安全使用</summary>
+ 				<p class="clear W11 F4 bgc9">    健康档案。
+        			</p>
+            </details>
+       </details>
+        <div class="clear W11 LH2 F4 AC colorR shadow0">友情链接</div>
+        <div id="linker" class="W11 MB"></div>
+    	<div id="footer" class="clear MT CW"><div class="W11 H4M F4 P1 AC bgca color1 FFHT">浙江慧脑信息科技有限公司</div><div class="W11 H6M F3 AC bgca"><span><img src="../img/ico/regico.png" class="middle"></span>浙ICP备14020218号 </div></div>
+    </div>
+    <div id="w0" class="none F3 LH2 bgc2">
+    </div>
+    <div id="w1" class="none F3 LH2 bgc10">
+
+
+
+    </div>
+
+	<div id="w2" class="none W11">
+        <ul id="R_BAR" class="fix top4 right0 B6M CHN2H bgc2 ofa" ></ul>
+        <ul id="cata2" class="FL C6M CHN2H F3 LH3 ofa">
+        	<li class="FL W11 H12M bg_cont bgrN ARP bordB" style="background-image:url(img/1498549510537.jpg)" onclick="showdetail()">HEM-6322蓝牙电子血压计</li>  
+        	<li class="FL W11 H12M bg_cont bgrN ARP bordB" style="background-image:url(img/1465212315330.jpg)">HEM-6200手腕式电子血压计</li>  
+        	<li class="FL W11 H12M bg_cont bgrN ARP bordB" style="background-image:url(img/1465213891767.jpg)">J20超薄超静音电子血压计</li>  
+        	<li class="FL W11 H12M bg_cont bgrN ARP bordB" style="background-image:url(img/1463999192035.jpg)">HEM-1020臂筒式电子血压计</li>  
+        	<li class="FL W11 H12M bg_cont bgrN ARP bordB" style="background-image:url(img/1465212315330.jpg)">电子血压计</li>      
+        </ul>
+    </div>
+    <div id="w3" class="none W11 ffWRYH">
+<div id="goods" class="index990 fix top0 W11 CH ofa bgc10">
+    	<div class="FL M05 ICON F3 LH3 bgca5 rad" onClick="hide('goods')">&larr;</div>
+	<div class="W11"></div>
+    <div class="clear W11 " ></div>
+    <div id="bmenu" class="fix bottom0 W11 AC bgc2 bordT ffHT">
+    </div>
+</div>
+    </div>
+</div>
+<div id="detail" class="none index99 fix top0 W11 CH bgc10 ofa"></div>
+
+</body>
+</html>
+<script src="../js/witjs0.js"></script>
+<script src="../js/wit_input0.js"></script>
+<script src="../js/wit_ajax.js"></script>
+<script src="../js/c.js"></script>
+<script>
+var userid,_uu,urlpath,skin,actobj,
+qx_cata=['血压计','血糖仪','理疗仪','轮椅','护理床','雾化器','胎心仪','心电仪','通气机','制氧机','助行器','其它'],
+
+markerArr=[],lastno;
+
+function loadend(){autocss();loadimg();_init();
+	postmessage({functionname:"getuserinfo",callback: "callback"});
+	var cont='';
+	for(var i=0,ln=qx_cata.length;i<ln;i++){
+		cont+='<li class="BTN bordB" onclick="">'+qx_cata[i]+'</li>'}
+	document.getElementById("R_BAR").innerHTML=cont;
+}
+function callback(msg){
+	_u=msg.message; _imgpath=_u.serverpath;console.log(_u);
+
+}
+function href2(){
+	location.href="medi"+event.srcElement.title+".html";
+}
+function addcom(t){
+	var cont='<div class="W11 H bgc73"><div class="FL BTN" onclick="hide(&quot;form&quot;)">&lt;</div>我要加盟<div class="FL BTN" onclick="pubcom()">提交</div></div>';
+	cont+='<input class="clear FL MLT A11 H" placeholder="请输入公司名称" ><input class="clear FL MLT A11 H" placeholder="请输入品牌名称，多个用逗号隔开" ><input class="FL MLT A21 H" placeholder="联系人姓名" value=""><input class="FL MLT A21 H" placeholder="联系人手机" value="" >';
+	cont+='<details><summary class="FL W11 H ALP color1" >加盟方法</summary><p id="brief" class="clear W11 F4 bgc9">平台的目标是为各相关方创造共赢互利的机会，用户在购买设备前可以通过租用的方式充分了解和比较，若短期使用采用租用的方式以减少资金，避免设备闲置；药店通过开展租赁服务增加客户流量和亲和度，增加销售设备、药品和保健屏的机会；厂商通过提供租赁设备，让用户充分了解了设备，增进购买机会，增强品牌知名度；医疗机构通过开展租赁服务，增加客户流量；医师通过提供资讯服务，提高知名度和粉丝量。平台通过用户流量，获得广告收入和销售设备获得佣金。</p></details> ';
+	cont+='<details><summary class="FL W11 H ALP color1" >已加盟成员</summary><ul><li class="W11 H bordB">欧姆龙健康医疗有限公司</li><li class="W11 H bordB">和康医疗集团</li></ul></details>';
+	document.getElementById("form").innerHTML=cont;
+
+}
+function pubcom(t){
+	if(_u&&_u.user_guid!=""&&userid){var map=new Map();
+		map.put("token",_u.token);map.put("userguid",_u.user_guid);
+		map.put("userid",userid);console.log(map);
+		WITAJAX.ajaxmap(map,urlpath+"/ep/indicator/retrievezt.do",success,error);}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function showdetail(){
+	document.getElementById("detail").innerHTML='<div class="W11 H bgc73"><div class="FL BTN" onclick="hide(&quot;detail&quot;)">&lt;</div>医疗共享网</div><img class="FL MLT B12M" src="img/1498549510537.jpg" /><div class="FL C15M H ALP">HEM-6322蓝牙电子血压计</div><div class="FL C15M F3 P1"><span class="F4 colorR ffHT">特点：</span><br>无线蓝牙技术，动态将血压数据传输到手机，保存分析，比较变化，分享给医生，调节用药等</div><div class="clear FL MLT A21 F4 LH2 ALP border">价格：698元<div class="FR M ICON AC F5 bgc35 rad">买</div></div><div class="FL MLT A21 F4 LH2 ALP border">日租金：2元<span class="FR M ICON AC F5 bgc105 rad">租</span></div>';
+	show("detail");
+}
+function relog(){hide("rereg");document.getElementById("pswd").value="";onfocusid("pswd");}
+function sethash(d){console.log(d);
+	if(d&&d.result==1){_uu=d.message;urlpath=_uu.json;//publish_sb(1000);
+		if(_uu&&_uu.pz==1){var map=new Map();map.put("token",_u.token);
+			map.put("userguid",_u.user_guid);
+			WITAJAX.ajaxmap(map,urlpath+"/ep/indicator/getsbcount.do",startsys,error);
+		}else{alertmes("该单位用户未通过审批")}
+	}else{show("rereg")}
+}
+function daojibs(){//自动拨号倒计时
+	var ob=document.getElementById('autotel');
+	if(ob.classList.contains("bord_check1")){
+		setTimeout(function (){ob.style.backgroundSize="100% 100%"},1000);
+		telauto=setTimeout(function (){	document.getElementById('tels').querySelector(".bord_check1").nextSibling.click()},11000);
+}}
+function cancelautotel(){//取消自动拨号
+	telauto&&clearTimeout(telauto);
+	document.getElementById('autotel').classList.remove("djbianse");
+	document.getElementById('autotel').style.backgroundSize="1% 100%"
+}
+function saveautotel(){
+	localStorage["autotel"+_u.user_guid]=JSON.stringify({a:document.getElementById("autotel").contains("bord_check1"),b:document.getElementById("autotel").title});
+
+}
+</script>

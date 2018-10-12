@@ -1,0 +1,297 @@
+<!DOCTYPE html><html>
+<head>
+<title>医疗共享厂家平台</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0,target-densitydpi=device-dpi">
+<meta name="keywords"content="医疗共享网">
+<meta name="description"content="医疗共享网">
+<link href="img/yl.jpg" rel="apple-touch-icon-precomposed" />
+<link rel="stylesheet" type="text/css" href="../css/witcs0.css">
+</head>
+<body class="ofa bgc10" onload="loadend()" onresize="autocss()">
+<div id="s_select" class="none index999 fix top0 W11 CH callnone"></div>
+<div id="alertm" class="none index1000 fix top0 W11 CH AC bgca callnone">
+	<div class="MA MT8 B34M H24M rad1 bgc10">
+    	<div class="MLT B32M H ALP rad1" >系统提示：</div>
+        <div id="alertm0" class="MLT B32M H12M F4 ALP indent" ></div>
+        <div class="MLT B32M H AC bgc15 rad1" onClick="hide('alertm')">知道了</div>
+</div></div>
+<div id="form" class="fix top0 index990 W11 CH bgc2 ofa"></div>
+
+<div id="nav" class="W11 H AC bgc73 ffHT">
+   <img class="FL ICON" data-src="img/yl.jpg" onclick="setplat(2)"/>
+   <input class="FL C14M H ALP bord_select bgc73" readonly data-t="radio" data-s="医疗共享网,医疗共享厂家平台,医疗共享网点入口,医疗共享诊所平台,医疗共享医师平台" value="医疗共享厂家平台" data-finp="href2"/>
+   <div title=5 class="FR ICON bgs50" style="background-image:url(../img/a/person.png)"  onClick="R_show();R_show('w5')"></div>
+   <div class="FR BTN" onClick=""></div>
+
+</div> 
+<div id="navb" class="fix bottom0 W11 H AC no_select bgc72 ffHT">
+   <div title=0 class="FL W51 H" onClick="showsb_tp()">设备</div>
+   <div title=1 class="FL W51 H" onClick="R_show();R_show('w1')">租赁</div>
+   <!--<div title=2 class="FL W51 H" onClick="R_show();R_show('w2')">销售</div>
+   <div title=3 class="FL W51 H" onClick="R_show();R_show('w3')">售后</div>
+   <div title=4 class="FL W51 H" onClick="R_show();R_show('w4')">分析</div>-->
+</div>
+
+<div class="FL W11 CHN2H ofa">
+    <div id="w2" class="none F3 LH2 bgc10">
+   		<div class="FL C6M H AC bgc10 bordB" onclick="addshebei();search_sb()">+添加设备</div>
+   	<!--	<div class="FR BTN bgc3 bordB " onclick="addlabel()">+</div>-->
+        <ul id="R_BAR" class="fix top4 right0 B6M CHN2H bgc3 ofa" ></ul>
+        <ul id="cata2" class="FL C6M CHN3H ofa"></ul>
+    </div>
+    <div id="w1" class="none F3 LH2 bgc10">
+		<div class="W11 H AC colorY">库存分布</div>
+        <ul id="cata1" class="W11 CHN2H ofa"></ul>
+    </div>
+
+	<div id="w0" class="none W11">
+		<div class="W11 H AC colorY">待处理订单</div>
+        <ul id="cata0" class="W11 CHN2H ofa"></ul>
+    </div>
+    <div id="w3" class="none W11 ffWRYH">
+		<div class="W11 H AC colorY">消息列表</div>
+        <ul id="cata3" class="W11 CHN2H ofa"></ul>
+    </div>
+    <div id="w5" class="none W11 ffWRYH">
+		<div class="W11 H AC colorR">厂家信息</div>
+        <div id="formf" class="W11 CHN2H ofa"></div>
+    </div>
+
+</div>
+<div id="detail" class="none index99 fix top0 W11 CH bgc10 ofa"></div>
+<div id="form" class="none fix top0 index990 W11 CH bgc2 ofa"></div> 
+</body>
+</html>
+<script src="../js/witjs0.js"></script>
+<script src="../js/wit_input0.js"></script>
+<script src="../js/wit_ajax.js"></script>
+<script src="../js/c.js"></script>
+<script src="js/yl.js"></script>
+<script>
+
+function loadend(){autocss();loadimg();_init();
+	postmessage({functionname:"getuserinfo",callback: "callback"});
+	var cont='';
+	for(var i=0,ln=qx_cata.length;i<ln;i++){//生成器械类别侧边栏
+		cont+='<li class="BTN bordB" onclick="search_sbpt()">'+qx_cata[i]+'</li>'}
+	document.getElementById("R_BAR").innerHTML=cont;
+	onclickid('navb',1);
+}
+function callback(msg){
+	_u=msg.message; _imgpath=_u.serverpath;console.log(_u);
+	getcom(0);//查询当前用户是不是供应商
+}
+function search_sbpt(){R_show();//分类查询已有设备
+	var map=new Map();
+	map.put("token",_u.token);map.put("userguid",_u.user_guid);
+	map.put("pt",event.srcElement.innerHTML);
+	map.put("sid",7)//_uu[0].id);
+	console.log(map);
+	WITAJAX.ajaxmap(map,"http://121.43.233.185/mavenmedicalsharing/product/retrievept.do",showsbtp,error);
+}
+function sb_detail(i){//设备详情
+	var da=sbtp_data[i];console.log(da);
+	document.getElementById("detail").innerHTML='<div class="W11 H AC bgc73"><div class="FL BTN" onclick="hide(&quot;detail&quot;)">&lt;</div>医疗共享网厂家平台</div><img class="FL MLT B12M" src="'+picpath+da.pics+'" /><div class="FL C15M H ALP">'+da.p_size+da.p_name+'</div><div class="FL C15M F3 P1"><span class="colorR ffHT">品牌：</span><br>'+da.brand+'<br><span class="colorR ffHT">厂商：</span><br>'+da.manuf+'</div><div class="clear FL MLT A11 F3 P1"><span class="colorR ffHT">特点：</span><br>'+da.p_char+'<br><span class="colorB ffHT">适用对象：</span><br>'+da.appli+'</div><div class="clear FL MLT A11 F3 LH2 ALP border">销售单价：'+da.price_c+'元/'+da.price_unit+'<span class="FR MR">供货单价：'+da.price_a+'元/'+da.price_unit+'</span></div><div class="FL MLT A21 F4 LH25 AC bgc35 rad1" onclick="puhuo('+i+')">网点销售补货</div><div class="FL MLT A21 F4 LH25 AC bgc105 rad1" onclick="puhuo('+i+')">网点出租铺货</div>';
+	show("detail");
+}
+function puhuo(i){var d=sbtp_data[i];console.log(d);//铺货界面
+	document.getElementById("form").innerHTML='<div class="W11 H AC bgc73"><div class="FL BTN" onclick="hide(&quot;form&quot;)">&lt;</div>铺货给网点<div class="FR BTN" onclick="a_puhuo()">提交</div></div><input id="isbn" class="clear FL MLT C16M H ALP" placeholder="请输入商品编码" value="'+d.p_code+'" ><div class="FL MT ICON bgc105 bgs50" style="background-image:url(../img/btn/2wm.png)" onclick="wit_disting()"></div><input id="price_c" class="FL MLT B9M H AC" placeholder="供货价格" value="'+d.price_a+'" ><input id="p_name" class="FL MLT A21 H AC" placeholder="商品名称" value="'+d.p_name+'" ><input id="p_size" class="FL MLT A21 H AC" placeholder="型号规格" value="'+d.p_size+'" ><input id="w_name" class="clear FL MLT C6M H ALP" placeholder="请输入或选择网点名称" ><div class="FL MT ICON bgc105 bgs50" style="background-image:url(../img/a/search.png)" onclick="searchwd()"></div><ul id="wli"class="W11 HX36M ofa"></ul><div class="W11 H AC bordB" onclick="my_puhuo(1)">历史铺货</div><ul id="wli2"></ul>';	
+	show('form');_init('form');
+}
+function a_puhuo(){//铺货发起
+	var json=[],pers=document.getElementById("wli").querySelectorAll(".bright"),ln=pers.length;console.log(_uu[0].id);
+	for(var i=0;i<ln;i++){
+		json[i]={id:0,order_s:1,s_id:_uu[0].id,io_time:new Date().Format('yyyy-MM-dd hh:mm:ss'),isbn:document.getElementById("isbn").value,price_c:document.getElementById("price_c").value,p_size:document.getElementById("p_size").value,p_name:document.getElementById("p_name").value,w_name:pers[i].innerHTML,c_id:pers[i].title,io_c:pers[i].nextSibling.value}
+	}
+	var map=new Map();	
+	map.put("token",_u.token);map.put("userguid",_u.user_guid);
+	map.put("json",JSON.stringify(json));console.log(map);
+	WITAJAX.ajaxmap(map,"http://121.43.233.185/mavenmedicalsharing/fpio/create.do",function(d){console.log(d);	alertmes(d.message)
+	if(d.result==1){
+		var da=d.obj,ln=da.length,cont='';console.log(da);
+		for(var i=0;i<ln;i++){var o=JSON.parse(da[i]);
+			cont+='<li class="W11 F3 LH2 ALP bordB">'+o.w_name+'</br>'+o.p_name+o.p_size+'<span class="FR MR">*'+o.io_c+'</span></li>'}
+		document.getElementById("wli2").innerHTML=cont+document.getElementById("wli2").innerHTML;
+		A_innerHTML("wli");
+	}else{alertmes(d.message)}},error);
+	pubable=false;
+}//192.168.1.39:8080
+function my_puhuo(t){//铺货查询
+	var map=new Map();
+	map.put("token",_u.token);map.put("userguid",_u.user_guid);
+	if(t==1){map.put("sid",_uu[0].id);
+	}else{map.put("cid",_uu[0].id);}console.log(map);
+	WITAJAX.ajaxmap(map,"http://192.168.1.103:8080/mavenmedicalsharing/fpio/retrieve.do",function(d){console.log(d);if(d.result==1){
+		var da=d.message,ln=da.length,cont='';
+		for(var i=0;i<ln;i++){cont+='<li class="clear FL ML C12M H ALP bordB">'+da[i].w_name+'</li><div class="FL M05 B9M F3 LH2 AC" >'+da[i].io_c+'</div>'}
+		document.getElementById("wli2").innerHTML=cont;
+	}else{alertmes(d.message)}},error);
+}//http://121.43.233.185
+
+function b_puhuo(){//铺货发起
+	var pers=document.getElementById("wli").querySelectorAll(".bright"),ln=pers.length,cids=pers[0].title,iocs=pers[0].nextSibling.value;console.log(ln);
+	for(var i=1;i<ln;i++){cids+=","+pers[i].title;iocs+=","+pers[i].nextSibling.value;}
+	var map=new Map(),json={};
+	json.id=0;json.order_s=1;json.s_id=_uu[0].id;
+	json.io_time=new Date().Format('yyyy-MM-dd hh:mm:ss');	
+	json.isbn=document.getElementById("isbn").value;
+	json.price_c=document.getElementById("price_c").value;
+	json.c_id=cids;json.io_c=iocs;	
+	map.put("token",_u.token);map.put("userguid",_u.user_guid);
+	map.put("json",json);console.log(map);
+	WITAJAX.ajaxmap(map,"http://192.168.1.39:8080/mavenmedicalsharing/qxfp/create.do",function(d){console.log(d);	alertmes(d.message)},error);
+	pubable=false;
+}//192.168.1.39:8080121.43.233.185
+function searchwd(){//搜索网点
+	var map=new Map();
+	map.put("token",_u.token);map.put("userguid",_u.user_guid);
+	map.put("wname",document.getElementById("w_name").value||0);console.log(map);
+	WITAJAX.ajaxmap(map,"http://121.43.233.185/mavenmedicalsharing/shop/retrievebywname.do",function(d){console.log(d);if(d.result==1){
+		var da=d.message,ln=da.length,cont='';
+		for(var i=0;i<ln;i++){cont+='<li class="clear FL ML C12M H ALP bordB" title="'+da[i].id+'" onclick="onbright()">'+da[i].w_name+'</li><input type=number class="FL M05 B9M F3 LH2 AC" placeholder="铺货数量" >'}
+			document.getElementById("wli").innerHTML=cont;
+		}else{alertmes(d.message)}},error);
+}//121.43.233.185
+
+function addshebei(){console.log(_uu);//设备添加表
+	var cont='<div class="W11 H AC bgc73"><div class="FL BTN" onclick="hide(&quot;form&quot;)">&lt;</div><span onclick="javascript:perp=true">添加设备</span><div class="FR BTN" onclick="togg(&quot;tab0&quot;)">+</div></div><div id="tab0">';
+	cont+='<input id="p_code" class="clear FL MLT C6M H ALP" placeholder="扫描或输入商品编码" ><div  class="FL MT ICON bgc73 bgs50" style="background-image:url(../img/btn/2wm.png)"  onclick="wit_disting()"/></div><input id="manuf" class="FL MLT A32 H ALP" title="'+_uu[0].id+'" placeholder="生产厂家" value="'+(_uu[0].manuf||'')+'" ><input id="brand" class="FL MLT A31 H ALP bord_select" placeholder="品牌" readonly data-t="radios"  data-s="'+_uu[0].brands+'"><input id="p_name" class="FL MLT A11 H ALP" placeholder="商品名称" ><input id="p_size" class="FL MLT A11 H ALP" placeholder="型号规格" ><input id="p_type" class="FL MLT A21 H ALP bord_select" placeholder="类别标签" readonly data-t="radios" data-s="血压计,血糖仪,体重计,体温计,胎心仪,心电仪,雾化器,制氧机,通气机,按摩仪,理疗仪,护理床,轮椅,助行器,其它" ><input id="p_prop" class="FL MLT A21 H ALP bord_select" placeholder="工艺材质" readonly data-t="radios" data-s="其它,电子,金属,塑胶,木质,复合" ><input id="qt" class="FL MLT A21 H ALP bord_select" placeholder="品质等级" value="一等品" readonly data-t="radios"  data-s="特优品,一等品,合格品,二手品,处理品" ><input id="slife" class="FL MLT A21 H ALP bord_select" placeholder="保质期" ><input id="price_unit" class="FL MLT A31 H ALP bord_select" placeholder="计价单位" value="套" readonly data-t="radios"  data-s="套,盒,箱,kg" ><input id="price_c" class="FL MLT A31 H ALP" placeholder="供应价格" ><input id="price_a" class="FL MLT A31 H ALP" placeholder="建议销售价格" ><input id="appli" class="FL MLT A11 H ALP" placeholder="适用对象" value="成年人" readonly data-t="radios"  data-s="成年人,儿童,婴幼儿,孕妇,老年人,男性,女性"><textarea id="p_char" class="FL MLT A11 F3 ALP" placeholder="功能特点"  onInput="textheight(7)" data-rol="wrap"></textarea>';
+	cont+='<div id="pics" class="clear"><div id="imgup" class="FL MLT A11 F4 LH2 AC rad1 bgc158" onclick="add_files(&quot;imgup&quot;)">添加图片</div></div><div class="FR MRT A41 AC H bgc36 radR" onClick="pubgoods()">添加</div><div class="FR MRT A41 AC H bgc34" onClick="pubgoods(1)">修改</div><div class="FL MLT A41 AC H bgc32 radL" onClick="del_sb()">删除</div></div><div class="FL W11 H bordB AC colorY" onclick="search_sb()">已添设备</div><ul id="catasb" class="W11"></ul>';
+	document.getElementById("form").innerHTML=cont;
+	show("form");_init("form");	
+}
+function pubgoods(d){//添加或修改设备
+	var pc=document.getElementById('p_code').value;
+	if(pc&&perp==true){var map=new Map(),json={};
+		json.id=d==1?document.getElementById('p_code').title:0;
+		json.pics=d==1?document.getElementById("pics").title:"";
+		json.p_code=pc;
+		json.s_id=document.getElementById('manuf').title;
+		json.manuf=document.getElementById('manuf').value;
+		json.brand=document.getElementById('brand').value;
+		json.p_name=document.getElementById('p_name').value;
+		json.p_size=document.getElementById('p_size').value;
+		json.p_type=document.getElementById('p_type').value;
+		json.p_prop=document.getElementById('p_prop').value;
+		json.qt=document.getElementById('qt').value;
+		json.slife=document.getElementById('slife').value;
+		json.appli=document.getElementById('appli').value;
+		json.p_char=document.getElementById('p_char').value;
+		json.price_unit=document.getElementById('price_unit').value;
+		json.price_c=document.getElementById('price_c').value;
+		json.price_a=document.getElementById('price_a').value;
+		map.put("token",_u.token);map.put("userguid",_u.user_guid);
+		if(!nf_formdata.entries().next().done)map.put("pics",nf_formdata);
+		map.put("json",json);console.log(map);
+		WITAJAX.ajaxmap(map,"http://121.43.233.185/mavenmedicalsharing/product/create.do",successpb,error);}
+	perp=false;
+}//192.168.1.39:8080
+function successpb(d){//接口返回
+	perp=true;alertmes(d.message);
+	if(d.result==1){
+		if(document.getElementById('p_code').title==""){
+			sd_data.push(d.obj);
+			var i=sd_data.length-1, ob=document.getElementById("catasb"),
+			cld= document.createElement("DIV");
+			cld.className ="clear W11 bordB H ofa ALP";
+			cld.title=i;
+			cld.innerHTML =sd_data[i].p_name+' 型号：'+sd_data[i].p_size;
+			cld.onclick=function (){rep_sb()};
+			ob.insertBefore(cld,ob.firstChild);
+		}else{var da=sd_data[repobj.title]=d.obj;
+			repobj.innerHTML =da.p_name+' 型号：'+da.p_size;
+		}
+		clearpub();
+	}else{alertmes(d.message)}
+}
+function clearpub(){//清除表单
+	document.getElementById('p_code').title="";
+	document.getElementById('p_code').value="";
+	document.getElementById('p_size').value="";
+	document.getElementById('price_c').value="";
+	document.getElementById('price_a').value="";
+	document.getElementById("pics").title="";
+	document.getElementById("pics").innerHTML='<div id="imgup" class="FL MLT A11 H AC bgc158" onclick="add_files(&quot;imgup&quot;)">添加图片</div>';
+	nf_formdata = new FormData();
+}
+function search_sb(){//查询已有设备
+	var map=new Map();
+	map.put("token",_u.token);map.put("userguid",_u.user_guid);
+	map.put("sid",document.getElementById('manuf').title);console.log(map);
+	WITAJAX.ajaxmap(map,"http://121.43.233.185/mavenmedicalsharing/product/retrieve.do",showsb,error);
+}
+function showsb(d){console.log(d)//显示已有设备
+	sd_data=d.message;picpath=d.picpath;
+	var cont="",ln=sd_data.length;
+	for(var i=ln-1;i>=0;i--){
+		cont+='<div class="clear W11 bordB H ofa ALP" title='+i+' onclick="rep_sb()">'+sd_data[i].p_name+' 型号：'+sd_data[i].p_size+'</div>';
+	}
+	document.getElementById('catasb').innerHTML=cont;
+}
+function rep_sb(){//复原修改
+	repobj=event.srcElement;console.log(sd_data);
+	var cont='',da=sd_data[repobj.title],ps=da.pics.split(",");
+	document.getElementById("p_code").title=da.id;
+	document.getElementById("p_code").value=da.p_code;
+	document.getElementById("manuf").value=da.manuf;
+	document.getElementById("manuf").title=da.s_id;
+	document.getElementById("brand").value=da.brand;
+	document.getElementById("p_name").value=da.p_name;
+	document.getElementById("p_size").value=da.p_size;
+	document.getElementById("p_type").value=da.p_type;
+	document.getElementById("p_prop").value=da.p_prop;
+	document.getElementById("qt").value=da.qt;
+	document.getElementById("slife").value=da.slife;
+	document.getElementById("price_unit").value=da.price_unit;
+	document.getElementById("price_c").value=da.price_c;
+	document.getElementById("price_a").value=da.price_a;
+	document.getElementById("appli").value=da.appli;
+	document.getElementById("p_char").innerHTML=da.p_char;
+	document.getElementById("pics").title=da.pics;
+	if(ps!=""){for(var i=0;i<ps.length;i++){if(ps[i])cont+='<div><img class="FL MLT B34M" src="'+picpath+ps[i]+'" /><img name="delimg" src="../img/btn/del2.png" class="relative FL MLN4 MT B4M" onclick="delimgpub(&quot;'+ps[i]+'&quot;)"/></div>'}
+	}
+	document.getElementById("pics").innerHTML=cont+'<div id="imgup" class="FL MLT A11 H AC bgc158" onclick="add_files(&quot;imgup&quot;)">添加图片</div>';
+	nf_formdata = new FormData();show('catasb');
+}
+
+function del_sb(){//删除设备
+	if(document.getElementById("p_code").title){
+		var map=new Map();
+		map.put("token",_u.token);map.put("userguid",_u.user_guid);
+		map.put("id",document.getElementById("p_code").title);console.log(map);
+		WITAJAX.ajaxmap(map,"http://121.43.233.185/mavenmedicalsharing/product/delete.do",delsbsuc,error);
+	}else{alertmes("请先选中对象")}
+}
+function delsbsuc(d){console.log(d);//删除设备返回
+	if(d.result==1){repobj.parentNode.removeChild(repobj);clearpub();alertmes("删除成功");
+	}else{alertmes(d.message)}
+}
+function delimgpub(d){console.log(d);//删除图片
+	var da=sd_data[repobj.title];da.pics.replace(","+d/i,"");
+	document.getElementById("pics").title=da.pics;del_parent();
+	var map=new Map();map.put("token",_u.token); map.put("userguid",_u.user_guid);
+	map.put("id",document.getElementById("p_code").title);
+	map.put("picname",d);console.log(map);
+	WITAJAX.ajaxmap(map,"http://121.43.233.185/mavenmedicalsharing/product/detelepic.do",delimgsuc,error);
+}//121.43.233.185
+function delimgsuc(d){console.log(d);//删除图片返回
+	if(d.result==1){alertmes("删除成功");
+	}else{alertmes(d.message)}
+}
+
+
+function code2ad(d){console.log(d);
+	if(d.result>=0)document.getElementById("adcode").value=d.message;}
+	
+function wit_disting(){//启动扫描
+	actobj=event.srcElement;
+	postmessage({functionname:"get2code",callback:"get_codemes"});
+}
+function get_codemes(d){//二维码信息填充
+	actobj.previousSibling.value=d.message;
+}
+
+
+
+</script>

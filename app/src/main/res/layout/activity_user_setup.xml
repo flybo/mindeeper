@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    android:id="@+id/main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/include_toolbar"/>
+    <AbsoluteLayout
+        android:id="@+id/abslay_set"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tag="M,M,CW">
+        <TextView
+            android:id="@+id/tv_tool"
+            style="@style/text_user_setup"
+            android:tag="A51,H,F4"
+            android:text="@string/str_tool"/>
+
+        <TextView
+            android:id="@+id/tv_skin"
+            style="@style/text_user_setup"
+            android:tag="A51,H,F4"
+            android:text="@string/str_skin"/>
+
+        <TextView
+            android:id="@+id/tv_set_hand"
+            style="@style/text_user_setup"
+            android:tag="A51,H,F4"
+            android:text="@string/str_set_hand"/>
+
+        <TextView
+            android:id="@+id/tv_set_screen"
+            style="@style/text_user_setup"
+            android:tag="A51,H,F4"
+            android:text="@string/str_set_screen"/>
+
+        <TextView
+            android:id="@+id/tv_set_choice"
+            style="@style/text_user_setup"
+            android:tag="A51,H,F4"
+            android:text="@string/str_set_choice"/>
+
+        <TextView
+            style="@style/text_user_setup"
+            android:background="#AAAAAA"
+            android:tag="B51,H,F4"
+            android:text="@string/str_login_set"/>
+
+        <TextView
+            style="@style/text_user_setup"
+            android:background="#AAAAAA"
+            android:tag="B51,H,F4"
+            android:text="@string/str_system_set"/>
+
+        <TextView
+            style="@style/text_user_setup"
+            android:background="#AAAAAA"
+            android:tag="B51,H,F4"
+            android:text="@string/str_feedback"/>
+
+        <TextView
+            style="@style/text_user_setup"
+            android:background="#AAAAAA"
+            android:tag="B51,H,F4"
+            android:text="@string/str_recommend"/>
+
+        <TextView
+            style="@style/text_user_setup"
+            android:background="#AAAAAA"
+            android:tag="B51,H,F4"
+            android:text="@string/str_main"/>
+
+        <TextView
+            style="@style/text_user_setup"
+            android:background="#AAAAAA"
+            android:tag="B51,H,F4"
+            android:text="@string/str_cancellation"/>
+
+        <TextView
+            style="@style/text_user_setup"
+            android:background="#AAAAAA"
+            android:tag="B51,H,F4"
+            android:text="@string/str_substitution"/>
+
+        <TextView
+            style="@style/text_user_setup"
+            android:background="#AAAAAA"
+            android:tag="B51,H,F4"
+            android:text="@string/str_sign_out"/>
+
+        <TextView
+            android:id="@+id/tv_ercode"
+            style="@style/text_user_setup"
+            android:background="#AAAAAA"
+            android:tag="B51,H,F4"
+            android:text="二维码"/>
+    </AbsoluteLayout>
+</com.zhy.autolayout.AutoLinearLayout>

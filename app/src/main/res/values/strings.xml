@@ -1,0 +1,115 @@
+<resources>
+    <string name="app_name">医疗共享云</string>
+    <string name="add_friend">添加朋友</string>
+    <string name="error_code">异常码：</string>
+    <string name="please_check_net">请检查网络</string>
+    <string name="load_error">加载失败</string>
+    <string name="please_wait">请稍等</string>
+    <string name="content_no_empty">内容不能为空</string>
+    <string name="complete">完成</string>
+    <string name="change_success">修改成功</string>
+    <string name="change_fail">修改失败</string>
+    <string name="set_success">设置成功</string>
+    <string name="set_fail">设置失败</string>
+    <string name="save">保存</string>
+    <string name="save_success">保存成功</string>
+    <string name="save_fail">保存失败</string>
+    <string name="cancel">取消</string>
+    <string name="sure">确定</string>
+    <string name="sure_with_count">确定(%1$d)</string>
+
+    <!--搜索用户-->
+    <string name="user_no_found">该用户不存在</string>
+    <string name="search_colon">搜索:</string>
+    <string name="search">搜索</string>
+
+    <!--用户信息-->
+    <string name="send">发送</string>
+
+    <!--登录-->
+    <string name="login_error">登录失败</string>
+    <string name="phone_format_error">手机格式有误</string>
+    <string name="phone_not_empty">手机号不能为空</string>
+    <string name="password_not_empty">密码不能为空</string>
+    <string name="nickname_not_empty">昵称不能为空</string>
+    <string name="vertify_code_not_empty">验证码不能为空</string>
+    <string name="disconnect_server">与服务器失联</string>
+
+    <!--设置-->
+    <string name="new_message_remind">新消息提醒</string>
+    <string name="do_not_disturb_mode">勿扰模式</string>
+    <string name="chat">聊天</string>
+    <string name="privacy">隐私</string>
+    <string name="currency">通用</string>
+    <string name="account_and_safe">账号与安全</string>
+    <string name="about">关于微信</string>
+    <string name="exit">退出</string>
+    <string name="exit_account">退出当前账号</string>
+    <string name="exit_app">关闭微信</string>
+
+    <!-- activity_user_setup -->
+    <string name="str_tool">工具</string>
+    <string name="str_skin">皮肤</string>
+    <string name="str_set_hand">左手</string>
+    <string name="str_set_screen">全屏</string>
+    <string name="str_set_choice">锁转</string>
+    <string name="str_login_set">设置</string>
+    <string name="str_system_set">系统</string>
+    <string name="str_feedback">反馈</string>
+    <string name="str_recommend">推荐</string>
+    <string name="str_main">我的</string>
+    <string name="str_cancellation">注销</string>
+    <string name="str_substitution">换人</string>
+    <string name="str_sign_out">退出</string>
+
+    <string-array name="date">
+        <item>裘豆豆</item>
+        <item>B李莎</item>
+        <item>jb</item>
+        <item>Jobs</item>
+        <item>动力火车</item>
+        <item>伍佰</item>
+        <item>#蔡依林</item>
+        <item>$797835344$</item>
+        <item>Jack</item>
+        <item>9527</item>
+        <item>戚薇</item>
+        <item>齐期浩二</item>
+        <item>齐天大圣</item>
+        <item>品冠</item>
+        <item>吴克群</item>
+        <item>贲素琴</item>
+        <item>缪丝</item>
+        <item>成龙</item>
+        <item>王力宏</item>
+        <item>汪峰</item>
+        <item>王菲</item>
+        <item>那英</item>
+        <item>张伟</item>
+        <item>~夏先生</item>
+        <item>阿aaa</item>
+        <item>阿李珊</item>
+        <item>陈奕迅</item>
+        <item>周杰伦</item>
+        <item>曾一鸣</item>
+        <item>哈林</item>
+        <item>高进</item>
+        <item>高雷</item>
+        <item>阮金天</item>
+        <item>龚琳娜</item>
+        <item>苏醒</item>
+        <item>苏永康</item>
+        <item>陶喆</item>
+        <item>沙宝亮</item>
+        <item>宋冬野</item>
+        <item>宋伟</item>
+        <item>袁成杰</item>
+        <item>张学友</item>
+        <item>李德华</item>
+        <item>郑源</item>
+        <item>白山水</item>
+        <item>白亮</item>
+        <item>陈龙</item>
+        <item>陈丽丽</item>
+    </string-array>
+</resources>

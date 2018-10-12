@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/main_bg0"
+              android:orientation="vertical">
+
+    <com.bob.flyboymvp.widget.DLMultipleFingerScrollLayout
+        android:id="@+id/dl_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.bob.flyboymvp.widget.NoScrollViewPager
+                android:id="@+id/vp_cts"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <LinearLayout
+                android:id="@+id/ll_topbar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:tag="w,H"
+                android:background="@color/green2"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    style="@style/text_main_at">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="M2,M2"
+                        android:src="@mipmap/img_chat"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/text_main_at">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="M2,M2"
+                        android:src="@mipmap/cal2"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/text_main_at">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="M2,M2"
+                        android:src="@mipmap/message2"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </com.bob.flyboymvp.widget.DLMultipleFingerScrollLayout>
+</LinearLayout>

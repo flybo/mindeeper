@@ -1,0 +1,145 @@
+<!DOCTYPE html><html>
+<head>
+<title>医疗共享网药店平台</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0,target-densitydpi=device-dpi">
+<meta name="keywords"content="医疗共享网,医疗共享网药店平台">
+<meta name="description"content="医疗共享网,医疗共享网药店平台">
+<link href="img/yl.jpg" rel="apple-touch-icon-precomposed" />
+<link rel="stylesheet" type="text/css" href="../css/witcs0.css">
+</head>
+<body class="ofa bgc10" onload="loadend()" onresize="autocss()">
+<div id="s_select" class="none index999 fix top0 W11 CH callnone"></div>
+<div id="alertm" class="none index1000 fix top0 W11 CH AC bgca callnone"><div class="MA MT8 B34M H24M rad1 bgc10"><div class="MLT B32M H ALP rad1" >系统提示：</div><div id="alertm0" class="MLT B32M H12M F4 ALP indent" ></div><div class="MLT B32M H AC bgc15 rad1" onClick="hide('alertm')">知道了</div></div></div>
+<div id="form" class="fix top0 index990 W11 CH bgc2 ofa"></div>
+
+<div id="nav" class="W11 H AC bgc73 ffHT">
+   <img class="FL ICON" data-src="img/yl.jpg" onclick="setplat(2)"/>
+   <input class="FL C14M H ALP bord_select bgc73" readonly data-t="radio" data-s="医疗共享网,医疗共享网厂家平台,医疗共享网药店平台,医疗共享网诊所平台,医疗共享网医师平台" value="医疗共享网药店平台" data-finp="href2"/>
+   <div title=5 class="FR ICON bgs50" style="background-image:url(../img/a/person.png)"  onClick="R_show();R_show('w5')"></div>
+      <div class="FR BTN" onClick="shouhuo()">收货</div>
+
+</div> 
+<div id="navb" class="fix bottom0 W11 H AC no_select bgc72 ffHT">
+   <div title=0 class="FL W51 H" onClick="showsb_tp()">设备</div>
+   <div title=1 class="FL W51 H" onClick="R_show();R_show('w1')">租赁</div>
+   <div title=2 class="FL W51 H" onClick="R_show();R_show('w2')">销售</div>
+   <div title=3 class="FL W51 H" onClick="R_show();R_show('w3')">售后</div>
+   <div title=4 class="FL W51 H" onClick="R_show();R_show('w4')">分析</div>
+</div>
+
+<div class="FL W11 CHN2H ofa">
+    <div id="w2" class="none F3 LH2 bgc10">
+        <ul id="R_BAR" class="fix top4 right0 B6M CHN2H bgc3 ofa" ></ul>
+        <ul id="cata2" class="FL C6M CHN2H ofa"></ul>
+    </div>
+    <div id="w1" class="none F3 LH2 bgc10">
+		<div class="W11 H AC colorY">库存分布</div>
+        <ul id="cata1" class="W11 CHN2H ofa"></ul>
+    </div>
+
+	<div id="w0" class="none W11">
+		<div class="W11 H AC colorY">待处理订单</div>
+        <ul id="cata0" class="W11 CHN2H ofa"></ul>
+    </div>
+    <div id="w3" class="none W11 ffWRYH">
+		<div class="W11 H AC colorY">消息列表</div>
+        <ul id="cata3" class="W11 CHN2H ofa"></ul>
+    </div>
+    <div id="w5" class="none W11 ffWRYH">
+		<div class="W11 H AC colorR">网点信息</div>
+        <div id="formf" class="W11 CHN2H ofa"></div>
+    </div>
+
+</div>
+<div id="detail" class="none index99 fix top0 W11 CH bgc10 ofa"></div>
+<div id="form" class="none fix top0 index990 W11 CH bgc2 ofa"></div> 
+</body>
+</html>
+<script src="../js/witjs0.js"></script>
+<script src="../js/wit_input0.js"></script>
+<script src="../js/wit_ajax.js"></script>
+<script src="../js/c.js"></script>
+<script src="js/yl.js"></script>
+<script>
+var shouhuoda;
+function loadend(){autocss();loadimg();_init();
+	postmessage({functionname:"getuserinfo",callback: "callback"});
+	var cont='';
+	for(var i=0,ln=qx_cata.length;i<ln;i++){
+		cont+='<li class="BTN bordB" onclick="search_sbpt()">'+qx_cata[i]+'</li>'}
+	document.getElementById("R_BAR").innerHTML=cont;
+	onclickid('navb',2);
+}
+function callback(msg){
+	_u=msg.message; _imgpath=_u.serverpath;console.log(_u);
+	getcom(1);
+}
+function search_sbpt(){R_show();//分类查询已有设备
+	var map=new Map();
+	map.put("token",_u.token);map.put("userguid",_u.user_guid);
+	map.put("pt",event.srcElement.innerHTML);map.put("sid",0);
+	console.log(map);
+	WITAJAX.ajaxmap(map,"http://121.43.233.185/mavenmedicalsharing/product/retrievept.do",showsbtp,error);
+}
+function shouhuo(){//待收铺货
+	var map=new Map();
+	map.put("token",_u.token);map.put("userguid",_u.user_guid);
+	map.put("cid",_uu[0].id);console.log(map);
+	WITAJAX.ajaxmap(map,"http://121.43.233.185/mavenmedicalsharing/fpio/retrievebycid.do",function(d){console.log(d);if(d.result==1){
+		var da=shouhuoda=d.message,ln=da.length,cont='';
+		for(var i=0;i<ln;i++){cont+='<div class="clear W11 F3 LH2 ALP bordB">'+(da[i].order_s<3?'<span class="FR M H ACP borderO rad1" onclick="shouhuo1('+i+')">收货</span>':'')+da[i].p_name+da[i].p_size+'</br>供货价:'+da[i].price_c+'元 *  数量<input class="ML B9M F3 LH2 AC rad1" value="'+da[i].io_c+'"></div>'}
+	document.getElementById("form").innerHTML='<div class="W11 H AC bgc73"><div class="FL BTN" onclick="hide(&quot;form&quot;)">&lt;</div>网点待收货列表</div><ul>'+cont+'</ul>';
+	}else{alertmes(d.message)}},error);
+	show('form');
+}
+function shouhuo1(i){//待收铺货
+	var map=new Map();actobj=event.srcElement;
+	var ioc=1*actobj.parentNode.getElementsByTagName("INPUT")[0].value;
+	map.put("token",_u.token);map.put("userguid",_u.user_guid);
+	map.put("id",shouhuoda[i].id);	map.put("orders",3);
+	map.put("ioc",ioc);
+	console.log(map);
+	WITAJAX.ajaxmap(map,"http://121.43.233.185/mavenmedicalsharing/fpio/updateioc.do",function(d){console.log(d);if(d.result==1){actobj.classList.add("none");
+	}else{alertmes(d.message)}},error);
+//增加库存
+	var map=new Map(),json={};
+	json.id=0;json.c_id=shouhuoda[i].c_id;
+	json.s_id=shouhuoda[i].s_id;json.isbn=shouhuoda[i].isbn;
+	json.p_size=shouhuoda[i].p_size;json.p_name=shouhuoda[i].p_name;
+	json.price_c=shouhuoda[i].price_c;	json.inventory=ioc;
+	json.addr=_uu[0].addr;json.lng=_uu[0].lng;json.lat=_uu[0].lat;
+	json.balance_b=shouhuoda[i].price_c*ioc;
+	map.put("token",_u.token);map.put("userguid",_u.user_guid);
+	map.put("json",json);console.log(map);
+WITAJAX.ajaxmap(map,"http://192.168.1.39:8080/mavenmedicalsharing/qxfp/create.do",function(d){console.log(d);if(d.result==1){alertmes("库存添加成功")}else{alertmes(d.message)}},error);
+//添加库存成功后，由服务器端添加器械状态表每个器械一行
+}//http://121.43.233.185
+
+function search_sb(){//查询已有设备
+	var map=new Map();
+	map.put("token",_u.token);map.put("userguid",_u.user_guid);
+	map.put("sid",document.getElementById('manuf').title);console.log(map);
+	WITAJAX.ajaxmap(map,"http://121.43.233.185/mavenmedicalsharing/product/retrieve.do",showsb,error);
+}
+function showsb(d){console.log(d)//显示已有设备
+	sd_data=d.message;picpath=d.picpath;
+	var cont="",ln=sd_data.length;
+	for(var i=ln-1;i>=0;i--){
+		cont+='<div class="clear W11 bordB H ofa ALP" title='+i+' onclick="rep_sb()">'+sd_data[i].p_name+' 型号：'+sd_data[i].p_size+'</div>';
+	}
+	document.getElementById('catasb').innerHTML=cont;
+}
+function sb_detail(i){//设备详情
+	var da=sbtp_data[i];console.log(da);
+	document.getElementById("detail").innerHTML='<div class="W11 H AC bgc73"><div class="FL BTN" onclick="hide(&quot;detail&quot;)">&lt;</div>医疗共享网厂家平台</div><img class="FL MLT B12M" src="'+picpath+da.pics+'" /><div class="FL C15M H ALP">'+da.p_size+da.p_name+'</div><div class="FL C15M F3 P1"><span class="colorR ffHT">品牌：</span><br>'+da.brand+'<br><span class="colorR ffHT">厂商：</span><br>'+da.manuf+'</div><div class="clear FL MLT A11 F3 P1"><span class="colorR ffHT">特点：</span><br>'+da.p_char+'<br><span class="colorB ffHT">适用对象：</span><br>'+da.appli+'</div><div class="clear FL MLT A11 F3 LH2 ALP border">销售单价：'+da.price_c+'元/'+da.price_unit+'<span class="FR MR">供货单价：'+da.price_a+'元/'+da.price_unit+'</span></div><div class="FL MLT A21 F4 LH25 AC bgc35 rad1" onclick="puhuo('+i+')">网点销售补货</div><div class="FL MLT A21 F4 LH25 AC bgc105 rad1" onclick="puhuo('+i+')">网点出租铺货</div>';
+	show("detail");
+}
+
+
+
+
+
+
+
+</script>
